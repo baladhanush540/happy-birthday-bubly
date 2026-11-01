@@ -66,7 +66,7 @@ export default function Navbar({ onSendHearts }) {
           className="nav-links"
         >
           <a
-            href="#cake"
+            href="#jar"
             style={{
               color: '#ffd166',
               textDecoration: 'none',
@@ -77,7 +77,7 @@ export default function Navbar({ onSendHearts }) {
             onMouseEnter={(e) => (e.target.style.color = '#ff758f')}
             onMouseLeave={(e) => (e.target.style.color = '#ffd166')}
           >
-            🎂 Cake
+            💖 27 Reasons
           </a>
           <a
             href="#story"

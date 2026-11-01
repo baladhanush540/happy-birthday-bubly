@@ -4,7 +4,6 @@ import AudioPlayer from './components/AudioPlayer';
 import LockScreen from './components/LockScreen';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import BirthdayCake from './components/BirthdayCake';
 import PolaroidGallery from './components/PolaroidGallery';
 import LoveLetter from './components/LoveLetter';
 import ReasonsJar from './components/ReasonsJar';
@@ -32,7 +31,6 @@ export default function App() {
           <Navbar />
           <main>
             <HeroSection targetDateStr="2026-11-02T00:00:00" />
-            <BirthdayCake />
             <PolaroidGallery />
             <LoveLetter />
             <ReasonsJar />

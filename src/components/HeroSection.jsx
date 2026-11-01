@@ -228,11 +228,11 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
       {/* Action Buttons */}
       <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
         <a
-          href="#cake"
+          href="#jar"
           className="btn-romantic"
           style={{ textDecoration: 'none', fontSize: '15px', padding: '14px 30px' }}
         >
-          🎂 Blow Birthday Candles
+          💖 27 Reasons Why I Love You
         </a>
         <a
           href="#letter"
