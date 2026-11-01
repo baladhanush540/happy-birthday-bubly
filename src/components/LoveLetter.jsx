@@ -7,21 +7,47 @@ export default function LoveLetter() {
   const [displayText, setDisplayText] = useState('');
   const [isTypingDone, setIsTypingDone] = useState(false);
 
-  const fullLetter = `Dearest Bubly, En Azhage, My Birthday Queen... 🎂💖
+  const fullLetter = `❤️ Happy Birthday, My Divya! 🥹🫂
 
-Today is the most special day in the entire calendar, because on this day, the universe gifted the world the purest, sweetest soul—and somehow, I became the luckiest guy alive to call you mine.
+En Uyirukku Iniya Pirandhanaal Vazhthukkal, Divya! ❤️🎂
 
-Another year older, but to my eyes, you grow more breathtaking with every passing heartbeat. Your smile is my daily sunrise, your cute little pouts are my weakness, and the warmth in your hugs is my permanent home.
+Dear Divya,
 
-On your birthday today, November 2nd, I want to promise you something from the depths of my soul:
-I will stand beside you through every season, celebrate every triumph, wipe away every tear, and love you more fiercely tomorrow than I do today. 
+Inniku un birthday... aana indha naal enakku mattum illa, romba special. Yenna indha ulagathula enakku ivlo special ahana oru person vandha naal idhu. ❤️
 
-May all your dreams come true this year. May your heart always stay as soft and magical as it is today. 
+Namma relationship start aagi 3 years aagiduchu. Indha 3 years la evlo memories, evlo happiness, evlo fights, evlo tears, evlo cute moments... ellame kadandhu vandhirukkom.
 
-Happy Birthday, en anbe Bubly! You deserve the stars, the moon, and all the love in the universe.
+Unakku theriyuma? Nee en first love. Naanum un first love. Rendu perukkum love na enna nu theriyama start aana indha journey, inniku en life la romba precious ahana part ah maariduchu.
 
-Forever & Always Yours,
-Your One & Only ✨`;
+Namma first selfie la irundha happiness, first date la irundha nervousness, bus journey la irundha closeness, beach la spend panna moments, naa unakku poo vachcha andha cute moment, holding hands, random selfies, shopping, lunch, college moments... idhellam photos mattum illa Divya. Idhellam en life oda unforgettable chapters. ❤️
+
+Naan unna romba sincere ah love panren. Sila neram en possessiveness adhigama irukkalam. Unna vera yaar kittayum share panna pidikkama irukkalam. Un attention enakku mattum venum nu thonalam. Sila neram jealousy la unnecessary ah react pannirukkalam.
+
+Aana adhellam unna control panna illa. Unna lose panniduvomo ngra bayamum, nee enakku evlo important ngra feeling um dhaan adhukku pinnadi irukku. Un freedom, un happiness, un dreams ellathayum respect panni, unakku support ah irukkanum nu dhaan en aasai.
+
+Sometimes namma sandai poduvom, kovapaduvom, pesama iruppom. Aana andha moments la kooda unna love panradhu mattum maaradhu. Ego vida namma relationship mukkiyam nu naan namburen.
+
+Divya, nee enakku just girlfriend mattum illa. Nee en first love, en favourite person, en happiness, en daily thoughts la irukkura special person.
+
+Future la namakku enna nadakkum nu theriyadhu. Aana un kooda innum neraya birthdays celebrate pannanum, neraya places travel pannanum, neraya photos edukkanum, neraya memories create pannanum.
+
+Un dreams ellame fulfil aaganum. Nee life la periya success achieve pannanum. Un face la irukkura smile eppovume irukkanum. Unakku kashtam varumbodhu unakku support ah naan irukkanum. Un happiness la first ah smile panra person ah irukkanum.
+
+One promise from my heart...
+
+Namma first love story ah oru beautiful lifetime memory ah maatha enakku aasai. Unna inniku love panra alavukku, future la innum better ah love pannanum. Unna understand pannanum, respect pannanum, un kooda grow aaganum.
+
+Finally...
+
+Indha 3 years la en life ku vandha ella happiness kum thank you. Enna poruthavaraikkum, nee oru ordinary person illa. En life la nadandha most beautiful coincidence.
+
+Happy Birthday, My First Love. Happy Birthday, My Divya! ❤️🥹
+
+I LOVE YOU SO MUCH, DIVYA! 🫂💗
+
+Yesterday, Today, Tomorrow... Every version of my heart will choose you. ❤️
+
+Forever Yours! ♾️`;
 
   const handleOpenEnvelope = () => {
     if (!isOpen) {
@@ -43,12 +69,13 @@ Your One & Only ✨`;
     }
 
     let i = 0;
-    const speed = 24; // typing speed
+    const speed = 12; // faster typing speed
     const timer = setInterval(() => {
       if (i < fullLetter.length) {
         setDisplayText(fullLetter.slice(0, i + 1));
-        i++;
+        i += 2; // type smoothly
       } else {
+        setDisplayText(fullLetter);
         setIsTypingDone(true);
         clearInterval(timer);
       }
@@ -56,6 +83,11 @@ Your One & Only ✨`;
 
     return () => clearInterval(timer);
   }, [isOpen]);
+
+  const showAllText = () => {
+    setDisplayText(fullLetter);
+    setIsTypingDone(true);
+  };
 
   const resetLetter = () => {
     setIsOpen(false);
@@ -88,13 +120,13 @@ Your One & Only ✨`;
             marginBottom: '12px',
           }}
         >
-          <Mail size={14} /> Birthday Edition Wax-Sealed Letter 🎂
+          <Mail size={14} /> Birthday Letter 💌
         </span>
         <h2 className="font-serif text-gradient-rose" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
-          A Secret Birthday Letter For Bubly
+          A Birthday Letter For Divya
         </h2>
         <p style={{ color: '#c8b9d2', fontSize: '15px' }}>
-          Tied with memories, sealed with a birthday kiss. Tap the golden wax seal to open.
+          Tied with 3 years of memories and endless love. Tap the wax seal to open.
         </p>
       </div>
 
@@ -162,7 +194,7 @@ Your One & Only ✨`;
                 className="font-serif"
                 style={{ fontSize: '20px', color: '#f6d1b1', marginBottom: '6px' }}
               >
-                Strictly Confidential: For Bubly's Eyes Only
+                For My Divya's Eyes Only ❤️
               </p>
               <span
                 style={{
@@ -173,7 +205,7 @@ Your One & Only ✨`;
                   gap: '6px',
                 }}
               >
-                <Sparkles size={14} /> Click seal to break & read
+                <Sparkles size={14} /> Click wax seal to open & read
               </span>
             </div>
           </div>
@@ -222,8 +254,8 @@ Your One & Only ✨`;
             <div
               className="font-handwriting"
               style={{
-                fontSize: '22px',
-                lineHeight: '1.7',
+                fontSize: 'clamp(17px, 2.3vw, 21px)',
+                lineHeight: '1.75',
                 whiteSpace: 'pre-line',
                 color: '#281105',
                 minHeight: '260px',
@@ -251,26 +283,50 @@ Your One & Only ✨`;
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '12px',
                 borderTop: '1px solid #d4a373',
                 paddingTop: '16px',
               }}
             >
-              <button
-                onClick={resetLetter}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#9a3412',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                }}
-              >
-                <RotateCcw size={14} /> Replay Typing
-              </button>
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                <button
+                  onClick={resetLetter}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#9a3412',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                >
+                  <RotateCcw size={14} /> Replay Typing
+                </button>
+
+                {!isTypingDone && (
+                  <button
+                    onClick={showAllText}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#c2410c',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      textDecoration: 'underline',
+                    }}
+                  >
+                    ⚡ Show Full Letter
+                  </button>
+                )}
+              </div>
 
               <button
                 onClick={() => setIsOpen(false)}
