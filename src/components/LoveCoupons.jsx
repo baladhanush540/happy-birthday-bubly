@@ -213,7 +213,7 @@ function ScratchCard({ coupon, onRedeem, isRedeemed }) {
               cursor: isScratched ? 'pointer' : 'not-allowed',
             }}
           >
-            <Heart size={14} fill="#fff" /> Claim Coupon
+            <Heart size={14} fill="#ffffff" color="#000000" /> Claim Coupon
           </button>
         )}
 

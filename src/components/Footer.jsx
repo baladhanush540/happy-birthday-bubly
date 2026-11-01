@@ -18,7 +18,7 @@ export default function Footer() {
         <span className="font-serif text-gradient-rose" style={{ fontSize: '18px', fontWeight: 700 }}>
           Bubly
         </span>
-        <Heart size={16} fill="#ff4d6d" color="#ff4d6d" className="animate-pulse-heart" />
+        <Heart size={16} fill="#ffffff" color="#000000" className="animate-pulse-heart" />
       </div>
       <p style={{ color: '#8b759a', fontSize: '13px', margin: 0 }}>
         Nov 2, 2026 • Happy Birthday En Anbe! To the moon, the stars, and beyond eternity ✨

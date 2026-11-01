@@ -320,8 +320,8 @@ export default function ReasonsJar() {
 
             {/* Floating Hearts inside Jar */}
             <div className="animate-pulse-heart" style={{ display: 'flex', gap: '6px' }}>
-              <Heart size={36} fill="#ff4d6d" color="#ff4d6d" />
-              <Heart size={26} fill="#ffd166" color="#ffd166" style={{ marginTop: '10px' }} />
+              <Heart size={36} fill="#ffffff" color="#000000" />
+              <Heart size={26} fill="#000000" color="#ffffff" style={{ marginTop: '10px' }} />
             </div>
 
             <span
@@ -530,7 +530,7 @@ export default function ReasonsJar() {
                 >
                   #{r.id}
                 </span>
-                <Heart size={14} fill="#ff4d6d" color="#ff4d6d" />
+                <Heart size={14} fill="#ffffff" color="#000000" />
               </div>
               <h4
                 className="font-serif text-gradient-gold"
@@ -582,7 +582,7 @@ export default function ReasonsJar() {
             marginBottom: '10px',
           }}
         >
-          <Heart size={18} fill="#ff4d6d" /> One Last Reason... <Heart size={18} fill="#ff4d6d" />
+          <Heart size={18} fill="#ffffff" color="#000000" /> One Last Reason... <Heart size={18} fill="#000000" color="#ffffff" />
         </div>
         <p
           style={{

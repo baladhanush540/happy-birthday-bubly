@@ -18,7 +18,7 @@ export default function BackgroundStars() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Particles: stars, glowing orbs, and falling rose petals/hearts
+    // Particles: stars and falling white & black floating hearts
     const stars = Array.from({ length: 90 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -28,34 +28,40 @@ export default function BackgroundStars() {
       direction: Math.random() > 0.5 ? 1 : -1,
     }));
 
-    const petals = Array.from({ length: 22 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height - height,
-      size: Math.random() * 9 + 6,
-      speedY: Math.random() * 1.2 + 0.6,
-      speedX: Math.sin(Math.random() * Math.PI) * 0.8,
-      rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 1.5,
-      opacity: Math.random() * 0.6 + 0.3,
-      color: Math.random() > 0.3 ? '#ff758f' : '#e0a96d',
-    }));
+    const hearts = Array.from({ length: 24 }, () => {
+      const isBlack = Math.random() > 0.5;
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height - height,
+        size: Math.random() * 10 + 10,
+        speedY: Math.random() * 1.1 + 0.5,
+        speedX: Math.sin(Math.random() * Math.PI) * 0.8,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 1.2,
+        opacity: Math.random() * 0.5 + 0.35,
+        color: isBlack ? '#000000' : '#ffffff',
+        strokeColor: isBlack ? '#ffffff' : '#000000',
+      };
+    });
 
-    // Mouse sparkles trail
+    // Mouse sparkles trail (white & black hearts)
     const sparkles = [];
     const handleMouseMove = (e) => {
       if (Math.random() > 0.3) {
+        const isBlack = Math.random() > 0.5;
         sparkles.push({
           x: e.clientX,
           y: e.clientY,
           size: Math.random() * 4 + 2,
           alpha: 1,
-          color: Math.random() > 0.5 ? '#ffd166' : '#ff4d6d',
+          color: isBlack ? '#000000' : '#ffffff',
+          strokeColor: isBlack ? '#ffffff' : '#000000',
         });
       }
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    const drawHeart = (ctx, x, y, size, color, alpha) => {
+    const drawHeart = (ctx, x, y, size, color, strokeColor, alpha) => {
       ctx.save();
       ctx.translate(x, y);
       ctx.scale(size / 20, size / 20);
@@ -66,6 +72,11 @@ export default function BackgroundStars() {
       ctx.fillStyle = color;
       ctx.globalAlpha = alpha;
       ctx.fill();
+      if (strokeColor) {
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
       ctx.restore();
     };
 
@@ -84,27 +95,21 @@ export default function BackgroundStars() {
         ctx.fill();
       });
 
-      // Draw floating petals / mini hearts
-      petals.forEach((p) => {
-        p.y += p.speedY;
-        p.x += Math.sin(p.y * 0.01) * 0.8;
-        p.rotation += p.rotationSpeed;
+      // Draw floating white & black hearts
+      hearts.forEach((h) => {
+        h.y += h.speedY;
+        h.x += Math.sin(h.y * 0.01) * 0.8;
+        h.rotation += h.rotationSpeed;
 
-        if (p.y > height + 20) {
-          p.y = -20;
-          p.x = Math.random() * width;
+        if (h.y > height + 25) {
+          h.y = -25;
+          h.x = Math.random() * width;
         }
 
         ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate((p.rotation * Math.PI) / 180);
-        ctx.globalAlpha = p.opacity;
-
-        // Draw soft petal shape
-        ctx.beginPath();
-        ctx.ellipse(0, 0, p.size * 0.7, p.size * 1.2, Math.PI / 4, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
+        ctx.translate(h.x, h.y);
+        ctx.rotate((h.rotation * Math.PI) / 180);
+        drawHeart(ctx, 0, 0, h.size, h.color, h.strokeColor, h.opacity);
         ctx.restore();
       });
 
@@ -118,7 +123,7 @@ export default function BackgroundStars() {
         if (s.alpha <= 0 || s.size <= 0.5) {
           sparkles.splice(i, 1);
         } else {
-          drawHeart(ctx, s.x, s.y, s.size * 3, s.color, s.alpha);
+          drawHeart(ctx, s.x, s.y, s.size * 3, s.color, s.strokeColor, s.alpha);
         }
       }
 

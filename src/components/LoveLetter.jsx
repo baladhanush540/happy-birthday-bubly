@@ -237,7 +237,7 @@ Forever Yours! ♾️`;
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Heart size={20} fill="#b91c1c" color="#b91c1c" />
+                <Heart size={20} fill="#ffffff" color="#000000" />
                 <span
                   className="font-serif"
                   style={{ fontSize: '16px', fontWeight: 700, color: '#7f1d1d' }}

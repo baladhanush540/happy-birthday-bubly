@@ -589,7 +589,7 @@ export default function PolaroidGallery() {
                     marginBottom: '6px',
                   }}
                 >
-                  <Heart size={14} fill="#ff4d6d" /> Secret Confession To Bubly
+                  <Heart size={14} fill="#ffffff" color="#000000" /> Secret Confession To Bubly
                 </div>
                 <p style={{ color: '#ffd166', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
                   {currentMem.secretNote}
@@ -1205,7 +1205,7 @@ export default function PolaroidGallery() {
                   fontSize: '15px',
                 }}
               >
-                <Heart size={16} fill="#fff" /> Save Picture Memory
+                <Heart size={16} fill="#ffffff" color="#000000" /> Save Picture Memory
               </button>
             </form>
           </div>

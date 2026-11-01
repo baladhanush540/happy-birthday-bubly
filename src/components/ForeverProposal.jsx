@@ -113,7 +113,7 @@ export default function ForeverProposal() {
               marginBottom: '24px',
             }}
           >
-            <Heart size={44} fill="#ff4d6d" color="#ff4d6d" />
+            <Heart size={44} fill="#ffffff" color="#000000" />
           </div>
 
           <h3
@@ -162,7 +162,7 @@ export default function ForeverProposal() {
                 boxShadow: '0 0 35px rgba(255, 77, 109, 0.6)',
               }}
             >
-              <Heart size={20} fill="#fff" /> YES, A MILLION TIMES YES! 💖
+              <Heart size={20} fill="#ffffff" color="#000000" /> YES, A MILLION TIMES YES! 💖
             </button>
 
             {/* The Runaway No Button */}

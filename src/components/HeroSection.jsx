@@ -12,6 +12,7 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
   });
 
   const [kisses, setKisses] = useState([]);
+  const [showBigKiss, setShowBigKiss] = useState(false);
 
   useEffect(() => {
     const calculateTime = () => {
@@ -46,20 +47,29 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
   }, [targetDateStr]);
 
   const handleSendKiss = (e) => {
-    const id = Date.now() + Math.random();
-    const x = e.clientX || window.innerWidth / 2;
-    const y = e.clientY || window.innerHeight / 2;
-
-    setKisses((prev) => [...prev, { id, x, y }]);
+    setShowBigKiss(true);
     setTimeout(() => {
-      setKisses((prev) => prev.filter((k) => k.id !== id));
-    }, 2000);
+      setShowBigKiss(false);
+    }, 2400);
+
+    // Spawn multiple floating kisses
+    const newKisses = Array.from({ length: 8 }, (_, idx) => ({
+      id: Date.now() + idx + Math.random(),
+      x: window.innerWidth * (0.2 + Math.random() * 0.6),
+      y: window.innerHeight * (0.3 + Math.random() * 0.4),
+      size: Math.floor(Math.random() * 24 + 28),
+    }));
+
+    setKisses((prev) => [...prev, ...newKisses]);
+    setTimeout(() => {
+      setKisses((prev) => prev.filter((k) => !newKisses.some((nk) => nk.id === k.id)));
+    }, 2200);
 
     confetti({
-      particleCount: 25,
-      spread: 60,
-      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
-      colors: ['#ff4d6d', '#ff758f', '#ffd166'],
+      particleCount: 50,
+      spread: 90,
+      origin: { x: 0.5, y: 0.5 },
+      colors: ['#ffffff', '#000000', '#ff4d6d', '#ffd166'],
     });
   };
 
@@ -76,6 +86,55 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
         position: 'relative',
       }}
     >
+      {/* Giant Big Kiss Screen Overlay */}
+      {showBigKiss && (
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 99999,
+            pointerEvents: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            animation: 'bigKissAnimation 2.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+          }}
+        >
+          <div
+            style={{
+              fontSize: 'clamp(110px, 28vw, 200px)',
+              lineHeight: 1,
+              filter:
+                'drop-shadow(0 0 35px rgba(255, 77, 109, 0.85)) drop-shadow(0 0 70px rgba(255, 255, 255, 0.6))',
+              animation: 'heartPulse 0.8s infinite',
+            }}
+          >
+            💋
+          </div>
+          <div
+            className="glass-panel"
+            style={{
+              marginTop: '16px',
+              padding: '12px 28px',
+              borderRadius: '50px',
+              background: 'rgba(20, 10, 30, 0.94)',
+              border: '2px solid rgba(255, 255, 255, 0.6)',
+              color: '#ffffff',
+              fontSize: 'clamp(17px, 3.8vw, 24px)',
+              fontWeight: 800,
+              letterSpacing: '0.5px',
+              boxShadow:
+                '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 77, 109, 0.5)',
+            }}
+          >
+            💋 Big Birthday Kiss For Divya! 💋
+          </div>
+        </div>
+      )}
+
       {/* Floating Kisses */}
       {kisses.map((kiss) => (
         <div
@@ -86,7 +145,7 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
             top: kiss.y,
             transform: 'translate(-50%, -50%)',
             pointerEvents: 'none',
-            fontSize: '32px',
+            fontSize: `${kiss.size || 36}px`,
             animation: 'floatSlow 1.8s ease-out forwards',
             zIndex: 1000,
           }}
@@ -110,7 +169,7 @@ export default function HeroSection({ targetDateStr = '2026-11-02T00:00:00' }) {
           border: '1px solid rgba(224, 169, 109, 0.4)',
         }}
       >
-        <Sparkles size={16} /> 🎂 Happy Birthday To My Forever Girl, Bubly <Heart size={14} fill="#ff4d6d" color="#ff4d6d" />
+        <Sparkles size={16} /> 🎂 Happy Birthday To My Forever Girl, Bubly <Heart size={14} fill="#ffffff" color="#000000" />
       </div>
 
       {/* Main Heading */}

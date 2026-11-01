@@ -123,7 +123,7 @@ export default function LockScreen({ onUnlock }) {
               border: '1px solid rgba(255, 255, 255, 0.3)',
             }}
           >
-            <Heart size={48} color="#ff4d6d" fill="#ff4d6d" />
+            <Heart size={48} color="#000000" fill="#ffffff" />
           </div>
         </div>
 

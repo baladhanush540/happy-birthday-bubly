@@ -46,7 +46,7 @@ export default function Navbar({ onSendHearts }) {
       >
         {/* Brand / Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Heart size={20} color="#ff4d6d" fill="#ff4d6d" className="animate-pulse-heart" />
+          <Heart size={20} color="#000000" fill="#ffffff" className="animate-pulse-heart" />
           <span
             className="font-serif text-gradient-gold"
             style={{ fontSize: '18px', fontWeight: 700, letterSpacing: '0.5px' }}

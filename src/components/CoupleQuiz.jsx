@@ -8,13 +8,13 @@ const QUIZ_QUESTIONS = [
     question: 'Who fell in love first?',
     options: [
       { text: 'Me (I fell the moment I looked into your eyes!)', correct: true, note: 'True story! My heart knew immediately.' },
-      { text: 'Bubly (She secretly had a crush first 😉)', correct: true, note: 'Haha, maybe both of us at the exact same second!' },
+      { text: 'Divya (She secretly had a crush first 😉)', correct: true, note: 'Haha, maybe both of us at the exact same second!' },
       { text: 'It was instant cosmic magic ✨', correct: true, note: 'Written in the stars from day one.' },
     ],
   },
   {
     id: 2,
-    question: "What is Bubly's ultimate superpower?",
+    question: "What is Divya's ultimate superpower?",
     options: [
       { text: 'Looking impossibly cute even when angry', correct: true, note: 'Those puffed cheeks are unbeatable!' },
       { text: 'Fixing my worst moods with one voice note', correct: true, note: 'Your voice is pure medicine.' },
@@ -26,17 +26,71 @@ const QUIZ_QUESTIONS = [
     question: 'What happens when we start arguing about who loves who more?',
     options: [
       { text: 'I win, because I love you to the moon and back!', correct: true, note: 'Infinity + 1!' },
-      { text: 'Bubly wins, because her love is unmatched!', correct: true, note: 'You are my greatest blessing.' },
+      { text: 'Divya wins, because her love is unmatched!', correct: true, note: 'You are my greatest blessing.' },
       { text: 'We tie, and seal it with a long warm hug', correct: true, note: 'The only correct way to end the fight!' },
     ],
   },
   {
     id: 4,
-    question: 'Where does Bubly belong for all of eternity?',
+    question: 'Where does Divya belong for all of eternity?',
     options: [
       { text: 'Right inside my heart, safely protected forever', correct: true, note: 'Locked with no key to escape!' },
       { text: 'Walking beside me, holding my hand through life', correct: true, note: 'Hand in hand, always.' },
       { text: 'In my arms, being pampered every single day', correct: true, note: 'My forever queen.' },
+    ],
+  },
+  {
+    id: 5,
+    question: 'What is our most cherished first moment together?',
+    options: [
+      { text: 'Our very first picture together in the mall 📸', correct: true, note: 'Standing close to you in that purple dress gave me butterflies!' },
+      { text: 'Murugan Kovil-la poo vacha andha divine moment 🌸', correct: true, note: 'That flower placed by your hands became my heart\'s treasure.' },
+      { text: 'Every single second of our 3 years together ❤️', correct: true, note: 'Each second with you is a lifetime memory!' },
+    ],
+  },
+  {
+    id: 6,
+    question: "What happens when Bala looks into Divya's eyes?",
+    options: [
+      { text: 'Completely forgets whatever he was about to say 🥹', correct: true, note: 'Your eyes hold a magic spell that stops time!' },
+      { text: 'Falls in love all over again, deeper than yesterday ❤️', correct: true, note: 'Every single glance feels like the first day.' },
+      { text: 'Gets an uncontrollable urge to pull your cheeks 🥰', correct: true, note: 'Cuteness overload is 100% real!' },
+    ],
+  },
+  {
+    id: 7,
+    question: 'What is our favorite travel & outing memory?',
+    options: [
+      { text: 'Bus journey window seat with earphone sharing 🚌🎧', correct: true, note: 'Destination didn\'t matter, only you next to me!' },
+      { text: 'Sunset beach walk holding hands by the seashore 🌊🌅', correct: true, note: 'Golden hour waves, but my eyes were only on you.' },
+      { text: 'Random shopping and lunch dates together 🛍️🍽️', correct: true, note: 'Simple food, endless laughter, best company!' },
+    ],
+  },
+  {
+    id: 8,
+    question: 'Who gets more cute-possessive in our relationship?',
+    options: [
+      { text: "Bala (He wants Divya's attention 24/7 😉)", correct: true, note: 'Because you are my universe and nobody else\'s!' },
+      { text: 'Divya (Her cute jealousy and anger is pure love 💗)', correct: true, note: 'The cutest pout in the world when jealous!' },
+      { text: "Both of us! Because we can't stand a minute apart ♾️", correct: true, note: 'Two hearts, one soul, zero competition!' },
+    ],
+  },
+  {
+    id: 9,
+    question: "What is Bala's biggest promise to Divya for the future?",
+    options: [
+      { text: 'To hold your hand and stand by you in every situation 🤝', correct: true, note: 'Your forever support and safest shelter.' },
+      { text: 'To celebrate every single birthday together till we are 100 🎂', correct: true, note: 'A century of birthdays and a lifetime of love!' },
+      { text: 'To love, respect, understand, and choose you every day ❤️', correct: true, note: 'Yesterday, today, tomorrow, and forever!' },
+    ],
+  },
+  {
+    id: 10,
+    question: 'What is the absolute truth about Bala & Divya?',
+    options: [
+      { text: 'First Love, True Love, and Forever Love ❤️♾️', correct: true, note: 'Started with zero knowledge of love, now our whole world!' },
+      { text: 'Made for each other by the universe ✨', correct: true, note: 'Written in the stars, certified by our hearts!' },
+      { text: 'Endless memories, zero regrets, 100% soulmates 🫂', correct: true, note: 'The most beautiful coincidence of my life!' },
     ],
   },
 ];
@@ -55,7 +109,7 @@ export default function CoupleQuiz() {
       particleCount: 25,
       spread: 50,
       origin: { y: 0.7 },
-      colors: ['#ff4d6d', '#ffd166', '#f4c2c2'],
+      colors: ['#ffffff', '#000000', '#ff4d6d', '#ffd166'],
     });
 
     setTimeout(() => {
@@ -68,7 +122,7 @@ export default function CoupleQuiz() {
           particleCount: 150,
           spread: 90,
           origin: { y: 0.6 },
-          colors: ['#ff4d6d', '#ffd166', '#e0a96d', '#ff758f'],
+          colors: ['#ffffff', '#000000', '#ffd166', '#ff4d6d'],
         });
       }
     }, 1200);
@@ -145,7 +199,7 @@ export default function CoupleQuiz() {
               }}
             >
               <span>Question {currentQ + 1} of {QUIZ_QUESTIONS.length}</span>
-              <span>Bubly Edition 💕</span>
+              <span>Divya Edition 💕</span>
             </div>
             <div
               style={{
@@ -264,7 +318,7 @@ export default function CoupleQuiz() {
             </h3>
 
             <p style={{ color: '#f6d1b1', fontSize: '17px', lineHeight: 1.6, maxWidth: '500px', margin: '0 auto 24px' }}>
-              Confirmed by science, certified by the stars: You and I were tailor-made for each other, Bubly! 🥰
+              Confirmed by science, certified by the stars: You and I were tailor-made for each other, Divya! 🥰
             </p>
 
             <button
@@ -272,7 +326,7 @@ export default function CoupleQuiz() {
               className="btn-romantic"
               style={{ padding: '12px 28px', fontSize: '14px' }}
             >
-              <RotateCcw size={16} /> Play Again With Bubly
+              <RotateCcw size={16} /> Play Again With Divya
             </button>
           </div>
         )}
