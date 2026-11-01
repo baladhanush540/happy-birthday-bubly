@@ -23,85 +23,20 @@ import {
 } from 'lucide-react';
 import defaultMemories from '../data/memories.json';
 
-const INITIAL_MEMORIES = [
-  {
-    id: 'mem-1',
-    title: 'Our Very First Picture Together In The Mall 📸✨',
-    location: 'Mall Outing',
-    date: 'Our First Picture Ever',
-    image: '/images/bubly_mall_date.jpg',
-    caption:
-      'Standing right next to you, taking our very first picture together in the mall. In a crowded place with so many people walking by, all I could focus on was your sweet smile in that purple dress, Bubly.',
-    secretNote:
-      'I was secretly feeling butterflies standing this close to you for our very first photo, smiling inside knowing this was only the beginning of our story.',
-  },
-  {
-    id: 'mem-2',
-    title: 'The Rain & Shared Umbrella 🌧️',
-    location: 'Cozy Evening Walk',
-    date: 'Rainy Day Magic',
-    image: '/images/rain.jpg',
-    caption:
-      'When the sudden evening shower caught us by surprise, and we had to squeeze under one umbrella. Your laughter was the sweetest music in that entire storm.',
-    secretNote:
-      'I kept tilting the umbrella completely over you, smiling just watching you enjoy the raindrops.',
-  },
-  {
-    id: 'mem-3',
-    title: 'Our Cozy Coffee & Stolen Smiles ☕',
-    location: 'Our Favorite Cafe',
-    date: 'Warm Evening Moments',
-    image: '/images/cafe.jpg',
-    caption:
-      'Holding your hands across the wooden cafe table while the coffees grew cold. Time completely lost its meaning whenever you started talking.',
-    secretNote:
-      'My heart was racing with butterflies every time your eyes looked directly into mine.',
-  },
-  {
-    id: 'mem-4',
-    title: 'Under A Million Stars & Floating Lanterns 🌌',
-    location: 'Under The Starlit Sky',
-    date: 'Midnight Dream',
-    image: '/images/stargazing.jpg',
-    caption:
-      'Watching the warm lanterns rise up towards the galaxy with your head gently resting on my shoulder. Pure peace.',
-    secretNote:
-      'When you asked me what I wished for on that shooting star, the answer was always you.',
-  },
-  {
-    id: 'mem-5',
-    title: 'Sunset Beach Walk Hand In Hand 🌅',
-    location: 'Ocean Shoreline',
-    date: 'Golden Hour Memories',
-    image: '/images/beach.jpg',
-    caption:
-      'Walking barefoot along the soft wet sand while the golden sun melted into the ocean. The waves washed our footprints, but your touch stayed forever.',
-    secretNote:
-      'Every step holding your hand felt like walking straight into our forever.',
-  },
-];
+const INITIAL_MEMORIES = defaultMemories;
 
 export default function PolaroidGallery() {
   const [memories, setMemories] = useState(() => {
     try {
-      const saved = localStorage.getItem('bubly_memories_v2');
+      const saved = localStorage.getItem('bubly_memories_v3');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-      // Migrate old storage if present
-      const oldSaved = localStorage.getItem('bubly_memories');
-      if (oldSaved) {
-        const oldParsed = JSON.parse(oldSaved);
-        if (Array.isArray(oldParsed) && oldParsed.length > 0) {
-          // Replace mem-1 with corrected first mall picture version
-          return oldParsed.map((m) => (m.id === 'mem-1' ? INITIAL_MEMORIES[0] : m));
-        }
+        if (Array.isArray(parsed) && parsed.length >= defaultMemories.length) return parsed;
       }
     } catch (e) {
       console.error(e);
     }
-    return INITIAL_MEMORIES;
+    return defaultMemories;
   });
 
   const [activeTab, setActiveTab] = useState('slideshow'); // 'slideshow' | 'timeline' | 'polaroid'
@@ -122,7 +57,7 @@ export default function PolaroidGallery() {
   // Persist memories
   useEffect(() => {
     try {
-      localStorage.setItem('bubly_memories_v2', JSON.stringify(memories));
+      localStorage.setItem('bubly_memories_v3', JSON.stringify(memories));
     } catch (e) {
       console.error(e);
     }
@@ -160,7 +95,7 @@ export default function PolaroidGallery() {
       const result = await res.json();
       if (result.success && result.memories) {
         setMemories(result.memories);
-        localStorage.setItem('bubly_memories_v2', JSON.stringify(result.memories));
+        localStorage.setItem('bubly_memories_v3', JSON.stringify(result.memories));
         setSaveStatus('saved');
         setTimeout(() => setSaveStatus(null), 4000);
       }
